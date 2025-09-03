@@ -1,4 +1,6 @@
-<section class="bg-cover bg-center relative min-h-screen flex items-center hero py-20" >
+<section
+  class="bg-cover bg-center relative min-h-screen flex items-center hero py-20"
+>
   <!-- Overlay PNG -->
   <div class="absolute inset-0">
     <img
@@ -13,10 +15,14 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-12">
       <!-- Text Content (8 columns on large) -->
       <div class="lg:col-span-8">
-        <p class="uppercase tracking-wider font-semibold text-sm text-orange-500 mb-3">
+        <p
+          class="uppercase tracking-wider font-semibold text-sm text-orange-500 mb-3"
+        >
           Simple. Transparent. Secure
         </p>
-        <h1 class="text-4xl md:text-5xl text-white leading-tight mb-6 font-light tracking-wider">
+        <h1
+          class="text-4xl md:text-5xl text-white leading-tight mb-6 font-light tracking-wider"
+        >
           Banking <span class="text-orange-500 font-bold">Solutions</span>
         </h1>
         <p class="text-base leading-7 font-medium text-white mb-6">
@@ -51,7 +57,9 @@
   <div class="text-black py-12">
     <!-- Content -->
     <div class="relative container mx-auto px-6">
-      <div class="grid grid-cols-2 md:grid-cols-4 border-t border-b border-gray-300 text-center divide-x divide-gray-300">
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 border-t border-b border-gray-300 text-center divide-x divide-gray-300"
+      >
         <!-- Stat 1 -->
         <div class="p-6">
           <h2 class="text-4xl font-bold">
@@ -114,28 +122,49 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <div
         *ngFor="let card of cards"
-        class="aspect-square rounded-2xl shadow-lg p-10 flex flex-col justify-between"
-        [ngStyle]="{ background: card.style }"
+        class="relative aspect-square rounded-2xl shadow-lg overflow-hidden group"
       >
-        <div>
-          <h3 class="text-2xl font-semibold text-gray-900 mb-4">
-            {{ card.title }}
-          </h3>
-          <p class="text-base font-normal text-gray-700">
-            {{ card.desc }}
-          </p>
+        <!-- Normal Content -->
+        <div
+          class="p-10 flex flex-col justify-between h-full"
+          [ngStyle]="{ background: card.style }"
+        >
+          <div>
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+              {{ card.title }}
+            </h3>
+            <p class="text-base font-normal text-gray-700">
+              {{ card.desc }}
+            </p>
+          </div>
+
+          <div class="mt-8 flex items-center justify-between">
+            <a
+              [href]="card.link"
+              class="font-semibold text-gray-900 flex items-center gap-2"
+            >
+              Learn More
+              <span>➝</span>
+            </a>
+            <img [src]="card.img" alt="icon" class="w-20 h-20 opacity-80" />
+          </div>
         </div>
 
-        <div class="mt-8 flex items-center justify-between">
-          <a
-            [href]="card.link"
-            class="font-semibold text-gray-900 flex items-center gap-2"
-          >
-            Learn More
-            <span>➝</span>
-          </a>
-          <!-- Bigger Icon -->
-          <img [src]="card.img" alt="icon" class="w-20 h-20 opacity-80" />
+        <!-- Hover Content (replaces card) -->
+        <div
+          class="absolute inset-0 flex flex-col justify-between p-10 bg-orange-500 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        >
+          <div>
+            <h3 class="text-2xl font-semibold mb-4">
+              {{ card.title }}
+            </h3>
+            <p class="text-base font-normal">
+              {{ card.hoverText }}
+            </p>
+          </div>
+          <div class="mt-8 flex items-center gap-2 font-semibold">
+            Learn More <span>➝</span>
+          </div>
         </div>
       </div>
     </div>
@@ -162,71 +191,51 @@
     </div>
 
     <!-- Navigation Tabs -->
-    <ul class="flex flex-wrap justify-between border-gray-700 mb-8 text-sm md:text-base">
-      <li>
-        <a
-          href="#"
-          class="pb-2 px-4 border-b-2 text-gray-400 font-medium border-orange-600"
+    <ul
+      class="flex flex-wrap justify-between border-gray-700 mb-8 text-sm md:text-base"
+    >
+      <li *ngFor="let item of functionalities; let i = index">
+        <button
+          (click)="setActive(i)"
+          class="pb-2 px-4 font-medium transition border-b-2"
+          [ngClass]="
+            activeIndex === i
+              ? 'text-orange-600 border-orange-600'
+              : 'text-gray-400 border-transparent hover:text-orange-600'
+          "
         >
-          Median
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="pb-2 px-4 text-gray-400 hover:text-orange-600 transition"
-        >
-          Smart Information & Analytics System
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="pb-2 px-4 text-gray-400 hover:text-orange-600 transition"
-        >
-          Revenue Enhancer
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="pb-2 px-4 text-gray-400 hover:text-orange-600 transition"
-        >
-          FMoS
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="pb-2 px-4 text-gray-400 hover:text-orange-600 transition"
-        >
-          Next One
-        </a>
+          {{ item.tab }}
+        </button>
       </li>
     </ul>
 
     <!-- Content Card -->
-    <div class="bg-gray-800 rounded-2xl shadow-lg p-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    <div
+      *ngIf="functionalities[activeIndex]"
+      class="relative rounded-2xl shadow-lg overflow-hidden group"
+    >
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center p-8 h-full bg-gray-800"
+      >
         <!-- Left Side Image -->
         <div class="text-center">
           <img
-            src="image/dd4b8742ed008c666e45c1148ae519db9c322e66.png"
+            [src]="functionalities[activeIndex].img"
             alt="Core Banking Image"
-            class="mx-auto max-w-xs md:max-w-sm w-full h-auto rounded-lg"
+            class="mx-auto max-w-xs md:max-w-sm w-full h-[384px] rounded-lg"
           />
         </div>
 
         <!-- Right Side Content -->
         <div>
           <h6 class="text-orange-600 uppercase mb-2 text-lg tracking-wide">
-            Service Bus Lineup
+            {{ functionalities[activeIndex].subtitle }}
           </h6>
-          <h3 class="text-2xl text-white mb-4">Median</h3>
+          <h3 class="text-2xl text-white mb-4">
+            {{ functionalities[activeIndex].title }}
+          </h3>
           <p class="text-gray-300 leading-relaxed">
-            MEDIAN is a Middleware Processor to connect multiple systems
-            together and transforms data from one communication channel to
-            another channel like Web service - SOAP/REST, EJB, IBM MQ, etc.
+            {{ functionalities[activeIndex].desc }}
           </p>
           <a
             href="#"
@@ -256,7 +265,9 @@
     <!-- Testimonials Row -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pb-12">
       <!-- Left Card -->
-      <div class="bg-white shadow-lg rounded-xl text-center p-12 lg:col-span-4 cust-carrer-banner h-96">
+      <div
+        class="bg-white shadow-lg rounded-xl text-center p-12 lg:col-span-4 cust-carrer-banner h-96"
+      >
         <h1 class="text-5xl font-bold text-white mb-4">4.9</h1>
         <div class="text-orange-500 text-lg mb-4">⭐⭐⭐⭐⭐</div>
         <p class="text-white mb-4">(20+ Reviews)</p>
@@ -324,7 +335,9 @@
     <!-- Careers Banner done -->
     <div class="mt-12 rounded-xl cust-carrer-banner bg-gray-900">
       <!-- Grid Container -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 px-8 py-12 gap-6 items-center">
+      <div
+        class="grid grid-cols-1 lg:grid-cols-12 px-8 py-12 gap-6 items-center"
+      >
         <!-- Left Side -->
         <div class="text-center md:text-left mb-6 md:mb-0 lg:col-span-6">
           <p class="uppercase text-sm tracking-wide text-orange-600">Careers</p>
@@ -334,7 +347,9 @@
         </div>
 
         <!-- Right Side -->
-        <div class="text-center md:text-right lg:col-span-6 max-w-lg mx-auto lg:mx-0">
+        <div
+          class="text-center md:text-right lg:col-span-6 max-w-lg mx-auto lg:mx-0"
+        >
           <p class="text-white leading-relaxed">
             We truly believe that technology makes it possible, but it's people
             who make it happen.
@@ -353,45 +368,71 @@
 
 <section class="py-12 bg-white">
   <div class="container mx-auto px-6">
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 items-center text-center">
-      <div>
-        <img
-          src="image/customer1.png"
-          alt="Client 1"
-          class="mx-auto h-12 object-contain"
-        />
-      </div>
-
-      <div>
-        <img
-          src="image/customer2.png"
-          alt="Client 2"
-          class="mx-auto h-12 object-contain"
-        />
-      </div>
-
-      <div>
-        <img
-          src="image/customer3.png"
-          alt="Client 3"
-          class="mx-auto h-12 object-contain"
-        />
-      </div>
-
-      <div>
-        <img
-          src="image/customer4.png"
-          alt="Client 4"
-          class="mx-auto h-12 object-contain"
-        />
-      </div>
-
-      <div>
-        <img
-          src="image/customer5.png"
-          alt="Client 5"
-          class="mx-auto h-12 object-contain"
-        />
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img
+            src="image/customer1.png"
+            alt="Client 1"
+            class="mx-auto h-12 object-contain"
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="image/customer2.png"
+            alt="Client 2"
+            class="mx-auto h-12 object-contain"
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="image/customer3.png"
+            alt="Client 3"
+            class="mx-auto h-12 object-contain"
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="image/customer4.png"
+            alt="Client 4"
+            class="mx-auto h-12 object-contain"
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="image/customer5.png"
+            alt="Client 5"
+            class="mx-auto h-12 object-contain"
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="image/customer5.png"
+            alt="Client 5"
+            class="mx-auto h-12 object-contain"
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="image/customer5.png"
+            alt="Client 5"
+            class="mx-auto h-12 object-contain"
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="image/customer5.png"
+            alt="Client 5"
+            class="mx-auto h-12 object-contain"
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="image/customer5.png"
+            alt="Client 5"
+            class="mx-auto h-12 object-contain"
+          />
+        </div>
       </div>
     </div>
   </div>

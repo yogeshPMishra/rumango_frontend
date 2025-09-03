@@ -12,10 +12,12 @@
   left: 0;
   width: 100%;
   height: 400px;
-  background: url("../../../../public/image/v4541_1777.png") no-repeat center center;
+  background: url("../../../../public/image/v4541_1777.png") no-repeat center
+    center;
   background-size: cover !important;
   opacity: 0.7;
   z-index: 0;
- 
 }
-
+.mySwiper .swiper-wrapper {
+  transition-timing-function: linear !important; /* 🔹 continuous flow */
+}
