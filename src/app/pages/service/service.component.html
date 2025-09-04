@@ -1,0 +1,71 @@
+<section class="h-[460px] flex items-center justify-center bg-gray-100 hero">
+  <div class="container mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-semibold mb-4 text-white">Services</h2>
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="flex items-center justify-center space-x-2 text-white text-sm">
+        <li>
+          <a href="index.html" class="hover:text-orange-500">Home</a>
+        </li>
+        <li>
+          <i class="fas fa-caret-right text-white"></i>
+        </li>
+        <li class="text-orange-500 font-medium" aria-current="page">
+          Services
+        </li>
+      </ol>
+    </nav>
+  </div>
+</section>
+<section class="relative bg-gray-200 py-5">
+  <!-- Services Title -->
+  <div class="container mx-auto px-6 text-center my-16">
+    <p class="text-orange-600 font-semibold uppercase tracking-wide">
+      Our Services
+    </p>
+    <h2 class="text-4xl md:text-5xl mt-4">
+      The <span class="text-orange-600 font-bold">Services</span> We're Offering
+    </h2>
+    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+      Comprehensive core banking application services for all banking products
+      like FLEXCUBE, FINACLE, and more.
+    </p>
+  </div>
+
+  <!-- Service Cards -->
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div
+        *ngFor="let card of cards"
+        class="relative aspect-square rounded-2xl shadow-lg overflow-hidden group"
+      >
+        <!-- Normal Content -->
+        <div
+          class="p-10 flex flex-col justify-between h-full"
+          [ngStyle]="{ background: card.style }"
+        >
+          <div>
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+              {{ card.title }}
+            </h3>
+            <p class="text-base font-normal text-gray-700">
+              {{ card.desc }}
+            </p>
+          </div>
+
+          <div class="mt-8 flex items-center justify-between">
+            <a
+              [href]="card.link"
+              class="font-semibold text-gray-900 flex items-center gap-2"
+            >
+              Learn More
+              <span>➝</span>
+            </a>
+            <img [src]="card.img" alt="icon" class="w-20 h-20 opacity-80" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

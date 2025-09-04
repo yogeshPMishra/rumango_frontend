@@ -1,40 +1,69 @@
+<header
+  class="w-full bg-transparent shadow absolute top-0 left-0 px-[80px] z-1 border-b border-gray-400"
+>
+  <nav class="container-lg flex items-center justify-between py-[35px]">
+    <!-- Logo -->
+    <a href="/" class="flex items-center space-x-2">
+      <img src="image/logo.png" alt="Logo" class="h-10 w-auto" />
+    </a>
 
- <header class="w-full bg-transparent shadow absolute top-0 left-0 px-[80px] z-1 border-b border-gray-400">
-    <nav class="container-lg flex items-center justify-between py-[35px]">
-      <!-- Logo -->
-      <a href="/" class="flex items-center space-x-2">
-        <img src="image/logo.png" alt="Logo" class="h-10 w-auto" />
-      </a>
+    <!-- Desktop Menu -->
+    <ul
+      class="hidden md:flex items-center space-x-[30px] font-medium text-white"
+    >
+      <li><a routerLink="/" class="hover:text-orange-500">Home</a></li>
+      <li><a href="/about" class="hover:text-orange-500">About Us</a></li>
+      <li>
+        <a routerLink="/service" class="hover:text-orange-500">Our Services</a>
+      </li>
+      <li>
+        <a href="/products" class="hover:text-orange-500">Our Products</a>
+      </li>
+      <li><a routerLink="/career" class="hover:text-orange-500">Careers</a></li>
+      <li>
+        <a routerLink="/contact" class="hover:text-orange-500">Contact Us</a>
+      </li>
+    </ul>
 
-      <!-- Desktop Menu -->
-      <ul class="hidden md:flex items-center space-x-[30px] font-medium text-white">
-        <li><a routerLink="/" class="hover:text-orange-500">Home</a></li>
-        <li><a href="/about" class="hover:text-orange-500">About Us</a></li>
-        <li><a href="/services" class="hover:text-orange-500">Our Services</a></li>
-        <li><a href="/products" class="hover:text-orange-500">Our Products</a></li>
-        <li><a routerLink="/career" class="hover:text-orange-500">Careers</a></li>
-        <li><a routerLink="/contact" class="hover:text-orange-500">Contact Us</a></li>
-      </ul>
+    <!-- Mobile Menu Button -->
+    <button id="menu-btn" class="md:hidden p-2 text-white focus:outline-none">
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
+    </button>
+  </nav>
 
-      <!-- Mobile Menu Button -->
-      <button id="menu-btn" class="md:hidden p-2 text-white focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-             viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </nav>
-
-    <!-- Mobile Menu (hidden by default) -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
-      <ul class="flex flex-col space-y-2 p-4 font-medium bg-white">
-        <li><a routerLink="/" class="block hover:text-orange-500">Home</a></li>
-        <li><a href="/about" class="block hover:text-orange-500">About Us</a></li>
-        <li><a href="/services" class="block hover:text-orange-500">Our Services</a></li>
-        <li><a href="/products" class="block hover:text-orange-500">Our Products</a></li>
-        <li><a routerLink="/career" class="block hover:text-orange-500">Careers</a></li>
-        <li><a routerLink="/contact" class="block hover:text-orange-500">Contact Us</a></li>
-      </ul>
-    </div>
-  </header>
+  <!-- Mobile Menu (hidden by default) -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+    <ul class="flex flex-col space-y-2 p-4 font-medium bg-white">
+      <li><a routerLink="/" class="block hover:text-orange-500">Home</a></li>
+      <li><a href="/about" class="block hover:text-orange-500">About Us</a></li>
+      <li>
+        <a routerLink="/service" class="block hover:text-orange-500"
+          >Our Services</a
+        >
+      </li>
+      <li>
+        <a href="/products" class="block hover:text-orange-500">Our Products</a>
+      </li>
+      <li>
+        <a routerLink="/career" class="block hover:text-orange-500">Careers</a>
+      </li>
+      <li>
+        <a routerLink="/contact" class="block hover:text-orange-500"
+          >Contact Us</a
+        >
+      </li>
+    </ul>
+  </div>
+</header>
