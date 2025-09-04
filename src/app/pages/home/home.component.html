@@ -3,10 +3,18 @@
 >
   <!-- Overlay PNG -->
   <div class="absolute inset-0">
+    <!-- Background overlay image (behind) -->
     <img
       src="image/overlay.jpg"
-      alt=""
-      class="w-full h-full object-cover opacity-20"
+      alt="Overlay"
+      class="w-full h-full object-cover opacity-20 z-[0]"
+    />
+
+    <!-- Second image (above overlay) -->
+    <img
+      src="image/v4541_1572.png"
+      alt="Second"
+      class="w-full h-full object-cover opacity-70 z-[1]"
     />
   </div>
 
@@ -16,14 +24,14 @@
       <!-- Text Content (8 columns on large) -->
       <div class="lg:col-span-8">
         <p
-          class="uppercase tracking-wider font-semibold text-sm text-orange-500 mb-3"
+          class="uppercase tracking-wider font-bold text-sm text-orange-500 mb-3"
         >
           Simple. Transparent. Secure
         </p>
         <h1
-          class="text-4xl md:text-5xl text-white leading-tight mb-6 font-light tracking-wider"
+          class="text-4xl md:text-5xl text-white leading-tight mb-6 font-extralight tracking-wider"
         >
-          Banking <span class="text-orange-500 font-bold">Solutions</span>
+          Banking <span class="text-orange-500 font-normal">Solutions</span>
         </h1>
         <p class="text-base leading-7 font-medium text-white mb-6">
           Products and services designed to help you reach your financial goals.
@@ -34,7 +42,7 @@
         </p>
         <a
           href="#"
-          class="bg-white text-black rounded-full px-8 py-3 font-semibold mt-8 border-2 border-white transition duration-300 hover:bg-transparent hover:text-white"
+          class="bg-white text-black rounded-full px-8 py-3 font-normal mt-8 border-2 border-white transition duration-300 hover:bg-transparent hover:text-white"
         >
           Products
         </a>
@@ -62,6 +70,8 @@
       >
         <!-- Stat 1 -->
         <div class="p-6">
+          <h2 class="text-4xl font-semibold">
+            <span class="counter" data-target="71">71</span>+
           <h2 class="text-4xl font-bold">
             <span class="counter" data-target="71">{{projectCounter}}</span>+
           </h2>
@@ -84,6 +94,8 @@
         <div class="p-6">
           <h2 class="text-4xl font-bold">
             <span class="counter" data-target="100">{{deliveryCounter}}</span>+
+          <h2 class="text-4xl font-semibold">
+            <span class="counter" data-target="100">100</span>+
           </h2>
           <p class="mt-2 text-sm tracking-wide uppercase font-medium">
             ON TIME DELIVERY
@@ -94,6 +106,8 @@
         <div class="p-6">
           <h2 class="text-4xl font-bold">
             <span class="counter" data-target="12">{{bankingCounter}}</span>+
+          <h2 class="text-4xl font-semibold">
+            <span class="counter" data-target="12">12</span>+
           </h2>
           <p class="mt-2 text-sm tracking-wide uppercase font-medium">
             BANKING AUTOMATION
@@ -105,13 +119,13 @@
 
   <!-- Services Title -->
   <div class="container mx-auto px-6 text-center my-16">
-    <p class="text-orange-600 font-semibold uppercase tracking-wide">
+    <p class="text-orange-600 font-bold uppercase tracking-wide">
       Our Services
     </p>
-    <h2 class="text-4xl md:text-5xl mt-4">
+    <h2 class="text-4xl md:text-5xl mt-4 font-extralight">
       The <span class="text-orange-600 font-bold">Services</span> We're Offering
     </h2>
-    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+    <p class="mt-4 text-gray-600 max-w-2xl mx-auto font-medium">
       Comprehensive core banking application services for all banking products
       like FLEXCUBE, FINACLE, and more.
     </p>
@@ -176,13 +190,14 @@
   <div class="container mx-auto px-6">
     <!-- Top Text -->
     <div class="text-center mb-12">
-      <p class="text-orange-600 font-semibold uppercase tracking-wide mb-4">
+      <p class="text-orange-600 font-bold uppercase tracking-wide mb-4">
         Functionalities
       </p>
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
-        Global <span class="text-orange-600">Core Banking</span> Solution
+      <h2 class="text-3xl md:text-4xl font-extralight text-white mb-6">
+        Global
+        <span class="text-orange-600 font-semibold">Core Banking</span> Solution
       </h2>
-      <p class="text-gray-300 max-w-3xl mx-auto">
+      <p class="text-gray-300 max-w-3xl mx-auto font-medium">
         With our modular core banking solution, leverage the latest technology
         to sustainably run any type of bank. Open your core to a world of
         possibilities leveraging open architecture & data capabilities, and
@@ -197,7 +212,7 @@
       <li *ngFor="let item of functionalities; let i = index">
         <button
           (click)="setActive(i)"
-          class="pb-2 px-4 font-medium transition border-b-2"
+          class="pb-2 px-4 font-normal transition border-b-2"
           [ngClass]="
             activeIndex === i
               ? 'text-orange-600 border-orange-600'
@@ -228,13 +243,15 @@
 
         <!-- Right Side Content -->
         <div>
-          <h6 class="text-orange-600 uppercase mb-2 text-lg tracking-wide">
+          <h6
+            class="text-orange-600 font-medium uppercase mb-2 text-lg tracking-wide"
+          >
             {{ functionalities[activeIndex].subtitle }}
           </h6>
-          <h3 class="text-2xl text-white mb-4">
+          <h3 class="text-2xl text-white font-normal mb-4">
             {{ functionalities[activeIndex].title }}
           </h3>
-          <p class="text-gray-300 leading-relaxed">
+          <p class="text-gray-300 font-medium leading-relaxed">
             {{ functionalities[activeIndex].desc }}
           </p>
           <a
@@ -256,9 +273,9 @@
       <p class="uppercase text-orange-600 font-semibold tracking-wide mb-4">
         TESTIMONIALS
       </p>
-      <h2 class="text-4xl font-light text-gray-900">
+      <h2 class="text-4xl font-extralight text-gray-900">
         Read What They Have To Say About
-        <span class="text-orange-600 font-bold">Working With Us</span>
+        <span class="text-orange-600 font-normal">Working With Us</span>
       </h2>
     </div>
 
@@ -348,9 +365,13 @@
       >
         <!-- Left Side -->
         <div class="text-center md:text-left mb-6 md:mb-0 lg:col-span-6">
-          <p class="uppercase text-sm tracking-wide text-orange-600">Careers</p>
-          <h3 class="text-3xl md:text-4xl font-semibold text-white">
-            Become A <span class="text-orange-600 font-bold">Rumango</span>
+          <p
+            class="uppercase text-sm font-extrabold tracking-wide text-orange-600"
+          >
+            Careers
+          </p>
+          <h3 class="text-3xl md:text-4xl font-extralight text-white">
+            Become A <span class="text-orange-600 font-semibold">Rumango</span>
           </h3>
         </div>
 
@@ -358,7 +379,7 @@
         <div
           class="text-center md:text-right lg:col-span-6 max-w-lg mx-auto lg:mx-0"
         >
-          <p class="text-white leading-relaxed">
+          <p class="text-white font-medium leading-relaxed">
             We truly believe that technology makes it possible, but it's people
             who make it happen.
           </p>

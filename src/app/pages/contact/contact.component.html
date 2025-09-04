@@ -1,48 +1,55 @@
 <section class="h-[460px] flex items-center justify-center bg-gray-100 hero">
-  <div class="container mx-auto text-center">
-    <h2 class="text-3xl md:text-4xl font-semibold mb-4 text-white">Contact</h2>
+  <div class="container mx-auto text-center transform translate-y-10">
+    <h2 class="text-3xl md:text-4xl font-extralight mb-4 text-white">
+      Contact <span class="text-orange-500 font-bold">Us </span>
+    </h2>
 
     <!-- Breadcrumb -->
     <nav aria-label="breadcrumb">
-      <ol class="flex items-center justify-center space-x-2 text-white text-sm">
+      <ol
+        class="flex items-center font-normal justify-center space-x-2 text-white text-sm"
+      >
         <li>
           <a href="index.html" class="hover:text-orange-500">Home</a>
         </li>
-        <li><i class="fas fa-caret-right text-white"></i></li>
-        <li class="text-orange-500 font-medium" aria-current="page">Contact</li>
+        <li><i class="fas fa-caret-right text-orange-500"></i></li>
+        <li class="text-orange-500 font-medium" aria-current="page">
+          Contact Us
+        </li>
       </ol>
     </nav>
   </div>
 </section>
 
 <section class="py-12 bg-white px-[80px]">
-  <div class="container mx-auto px-6 ">
+  <div class="container mx-auto px-6">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-      
       <!-- Left Contact Info -->
       <div class="lg:col-span-5">
         <div
           class="h-full p-8 rounded-xl text-white shadow-lg"
-          style="background: linear-gradient(90deg, #6B1076 0%, #1D24A8 100%);"
+          style="background: linear-gradient(90deg, #6b1076 0%, #1d24a8 100%)"
         >
           <h4 class="text-2xl font-semibold mb-3">Contact Information</h4>
-          <p class="text-gray-200">Say something to start a live chat!</p>
+          <p class="text-gray-200 font-normal">
+            Say something to start a live chat!
+          </p>
 
           <ul class="mt-6 space-y-6">
-            <li class="flex items-start gap-3">
-              <i class="fa-solid fa-phone text-lg"></i>
+            <li class="flex items-start gap-3 font-normal">
+              <i class="fa-solid fa-phone text-orange-500 text-lg"></i>
               <a href="tel:+918804090506" class="hover:underline">
                 (+91) 8804 090 506
               </a>
             </li>
-            <li class="flex items-start gap-3">
-              <i class="fa-solid fa-envelope text-lg"></i>
+            <li class="flex items-start gap-3 font-normal">
+              <i class="fa-solid fa-envelope text-orange-500 text-lg"></i>
               <a href="mailto:sales@rumango.com" class="hover:underline">
-                {{'sales@rumango.com'}}
+                {{ "sales@rumango.com" }}
               </a>
             </li>
-            <li class="flex items-start gap-3">
-              <i class="fa-solid fa-location-dot text-lg"></i>
+            <li class="flex items-start gap-3 font-normal">
+              <i class="fa-solid fa-location-dot text-orange-500 text-lg"></i>
               <span>
                 4th Floor, Akshay Tech Park, EPIP, Whitefield<br />
                 Bengaluru, Karnataka, India – 560066
@@ -54,42 +61,44 @@
 
       <!-- Right Contact Form -->
       <div class="lg:col-span-7">
-        <div class="h-full p-8 bg-white rounded-xl shadow-lg">
+        <div class="h-full p-8 rounded-xl">
           <form>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <input
                 type="text"
                 placeholder="First Name"
-                class="border-b border-gray-300 focus:border-blue-500 focus:outline-none py-2"
+                class="border-b border-gray-300 focus:border-blue-500 focus:outline-none py-2 font-normal"
               />
               <input
                 type="text"
                 placeholder="Last Name"
-                class="border-b border-gray-300 focus:border-blue-500 focus:outline-none py-2"
+                class="border-b border-gray-300 focus:border-blue-500 focus:outline-none py-2 font-normal"
               />
               <input
                 type="email"
                 placeholder="Email"
-                class="border-b border-gray-300 focus:border-blue-500 focus:outline-none py-2"
+                class="border-b border-gray-300 focus:border-blue-500 focus:outline-none py-2 font-normal"
               />
               <input
                 type="text"
                 placeholder="Phone Number"
-                class="border-b border-gray-300 focus:border-blue-500 focus:outline-none py-2"
+                class="border-b border-gray-300 focus:border-blue-500 focus:outline-none py-2 font-normal"
               />
             </div>
 
             <textarea
               rows="4"
               placeholder="Write your message..."
-              class="mt-6 w-full border-b border-gray-300 focus:border-blue-500 focus:outline-none py-2"
+              class="mt-6 w-full border-b border-gray-300 focus:border-blue-500 focus:outline-none py-2 font-normal"
             ></textarea>
 
             <div class="mt-6 text-right">
               <button
                 type="submit"
                 class="px-6 py-3 rounded-lg text-white font-medium shadow-md"
-                style="background: linear-gradient(90deg, #6B1076 0%, #1D24A8 100%);"
+                style="
+                  background: linear-gradient(90deg, #6b1076 0%, #1d24a8 100%);
+                "
               >
                 Send Message
               </button>
@@ -97,7 +106,6 @@
           </form>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -112,4 +120,3 @@
     referrerpolicy="no-referrer-when-downgrade"
   ></iframe>
 </section>
-
