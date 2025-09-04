@@ -2,19 +2,11 @@
   class="bg-cover bg-center relative min-h-screen flex items-center hero py-20"
 >
   <!-- Overlay PNG -->
-  <div class="absolute inset-0">
-    <!-- Background overlay image (behind) -->
-    <img
-      src="image/overlay.jpg"
-      alt="Overlay"
-      class="w-full h-full object-cover opacity-20 z-[0]"
-    />
-
-    <!-- Second image (above overlay) -->
+ <div class="absolute inset-0">
     <img
       src="image/v4541_1572.png"
-      alt="Second"
-      class="w-full h-full object-cover opacity-70 z-[1]"
+      alt=""
+      class="w-full h-full object-cover opacity-20"
     />
   </div>
 
@@ -71,8 +63,6 @@
         <!-- Stat 1 -->
         <div class="p-6">
           <h2 class="text-4xl font-semibold">
-            <span class="counter" data-target="71">71</span>+
-          <h2 class="text-4xl font-bold">
             <span class="counter" data-target="71">{{projectCounter}}</span>+
           </h2>
           <p class="mt-2 text-sm tracking-wide uppercase font-medium">
@@ -82,7 +72,7 @@
 
         <!-- Stat 2 -->
         <div class="p-6">
-          <h2 class="text-4xl font-bold">
+          <h2 class="text-4xl font-semibold">
             <span class="counter" data-target="11">{{countryCounter}}</span>+
           </h2>
           <p class="mt-2 text-sm tracking-wide uppercase font-medium">
@@ -92,10 +82,8 @@
 
         <!-- Stat 3 -->
         <div class="p-6">
-          <h2 class="text-4xl font-bold">
-            <span class="counter" data-target="100">{{deliveryCounter}}</span>+
           <h2 class="text-4xl font-semibold">
-            <span class="counter" data-target="100">100</span>+
+            <span class="counter" data-target="100">{{deliveryCounter}}</span>+
           </h2>
           <p class="mt-2 text-sm tracking-wide uppercase font-medium">
             ON TIME DELIVERY
@@ -104,11 +92,9 @@
 
         <!-- Stat 4 -->
         <div class="p-6">
-          <h2 class="text-4xl font-bold">
-            <span class="counter" data-target="12">{{bankingCounter}}</span>+
           <h2 class="text-4xl font-semibold">
-            <span class="counter" data-target="12">12</span>+
-          </h2>
+            <span class="counter" data-target="12">{{bankingCounter}}</span>+
+         </h2>
           <p class="mt-2 text-sm tracking-wide uppercase font-medium">
             BANKING AUTOMATION
           </p>
@@ -119,11 +105,11 @@
 
   <!-- Services Title -->
   <div class="container mx-auto px-6 text-center my-16">
-    <p class="text-orange-600 font-bold uppercase tracking-wide">
+    <p class="text-orange-500 font-bold uppercase tracking-wide">
       Our Services
     </p>
     <h2 class="text-4xl md:text-5xl mt-4 font-extralight">
-      The <span class="text-orange-600 font-bold">Services</span> We're Offering
+      The <span class="text-orange-500 font-bold">Services</span> We're Offering
     </h2>
     <p class="mt-4 text-gray-600 max-w-2xl mx-auto font-medium">
       Comprehensive core banking application services for all banking products
@@ -190,12 +176,12 @@
   <div class="container mx-auto px-6">
     <!-- Top Text -->
     <div class="text-center mb-12">
-      <p class="text-orange-600 font-bold uppercase tracking-wide mb-4">
+      <p class="text-orange-500 font-bold uppercase tracking-wide mb-4">
         Functionalities
       </p>
       <h2 class="text-3xl md:text-4xl font-extralight text-white mb-6">
         Global
-        <span class="text-orange-600 font-semibold">Core Banking</span> Solution
+        <span class="text-orange-500 font-semibold">Core Banking</span> Solution
       </h2>
       <p class="text-gray-300 max-w-3xl mx-auto font-medium">
         With our modular core banking solution, leverage the latest technology
@@ -215,8 +201,8 @@
           class="pb-2 px-4 font-normal transition border-b-2"
           [ngClass]="
             activeIndex === i
-              ? 'text-orange-600 border-orange-600'
-              : 'text-gray-400 border-transparent hover:text-orange-600'
+              ? 'text-orange-500 border-orange-600'
+              : 'text-gray-400 border-transparent hover:text-orange-500'
           "
         >
           {{ item.tab }}
@@ -244,7 +230,7 @@
         <!-- Right Side Content -->
         <div>
           <h6
-            class="text-orange-600 font-medium uppercase mb-2 text-lg tracking-wide"
+            class="text-orange-500 font-medium uppercase mb-2 text-lg tracking-wide"
           >
             {{ functionalities[activeIndex].subtitle }}
           </h6>
@@ -270,12 +256,12 @@
   <div class="container mx-auto px-6">
     <!-- Heading -->
     <div class="text-center mb-12">
-      <p class="uppercase text-orange-600 font-semibold tracking-wide mb-4">
+      <p class="uppercase text-orange-500 font-semibold tracking-wide mb-4">
         TESTIMONIALS
       </p>
       <h2 class="text-4xl font-extralight text-gray-900">
         Read What They Have To Say About
-        <span class="text-orange-600 font-normal">Working With Us</span>
+        <span class="text-orange-500 font-normal">Working With Us</span>
       </h2>
     </div>
 
@@ -366,12 +352,12 @@
         <!-- Left Side -->
         <div class="text-center md:text-left mb-6 md:mb-0 lg:col-span-6">
           <p
-            class="uppercase text-sm font-extrabold tracking-wide text-orange-600"
+            class="uppercase text-sm font-extrabold tracking-wide text-orange-500"
           >
             Careers
           </p>
           <h3 class="text-3xl md:text-4xl font-extralight text-white">
-            Become A <span class="text-orange-600 font-semibold">Rumango</span>
+            Become A <span class="text-orange-500 font-semibold">Rumango</span>
           </h3>
         </div>
 

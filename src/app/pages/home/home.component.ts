@@ -190,10 +190,12 @@ export class HomeComponent {
   constructor(private cdr: ChangeDetectorRef) {}
   ngOnInit() {
     this.avatars = [...this.testimonials];
-    this.animateCounter('projectCounter', 0, 71, 2000);
-    this.animateCounter('countryCounter', 50, 11, 2000);
-    this.animateCounter('deliveryCounter', 0, 100, 2000);
-    this.animateCounter('bankingCounter', 0, 12, 2000);
+    setTimeout(()=>{
+      this.animateCounter('projectCounter', 0, 71, 2000);
+      this.animateCounter('countryCounter', 50, 11, 2000);
+      this.animateCounter('deliveryCounter', 0, 100, 2000);
+      this.animateCounter('bankingCounter', 0, 12, 2000);
+    },1000);
   }
 
   ngAfterViewInit() {

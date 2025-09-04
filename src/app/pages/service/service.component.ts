@@ -3,7 +3,7 @@ import { NgClass, NgFor, NgStyle, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-service',
-  imports: [NgFor, NgClass, NgStyle, NgIf],
+  imports: [NgFor, NgStyle],
   templateUrl: './service.component.html',
   styleUrl: './service.component.css',
 })
