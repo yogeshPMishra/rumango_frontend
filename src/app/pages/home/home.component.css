@@ -7,17 +7,32 @@
   background-size: cover !important;
 }
 .service-bg {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  height: 400px;
-  background: url("../../../../public/image/v4541_1777.png") no-repeat center
-    center;
-  background-size: cover !important;
-  opacity: 0.7;
+  position: relative;
+  background-color: #ffffff;
+  background-size: contain !important;
   z-index: 0;
 }
+
+.service-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../../../../public/image/v4541_1777.png") no-repeat center
+    center;
+  background-size: contain !important;
+  opacity: 0.2; /* ✅ only background gets opacity */
+  background-position: top;
+  z-index: -1;
+}
+
 .mySwiper .swiper-wrapper {
   transition-timing-function: linear !important; /* 🔹 continuous flow */
+}
+.bg-banking {
+  background: url("../../../../public/image/overlay.jpg") !important;
+  background-size: cover !important;
+  background-position: top/center;
 }
