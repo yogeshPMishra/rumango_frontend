@@ -2,9 +2,12 @@
   class="bg-cover bg-center relative min-h-screen flex items-center hero py-20"
 >
   <!-- Overlay PNG -->
+ <div class="absolute inset-0">
   <div class="absolute inset-0">
     <img
       src="image/v4541_1572.png"
+      alt=""
+      class="w-full h-full object-cover opacity-20"
       alt=""
       class="w-full h-full object-cover opacity-20"
     />
@@ -63,7 +66,7 @@
         <!-- Stat 1 -->
         <div class="p-6">
           <h2 class="text-4xl font-semibold">
-            <span class="counter" data-target="71">71</span>+
+            <span class="counter" data-target="71">{{projectCounter}}</span>+
           </h2>
           <p class="mt-2 text-sm tracking-wide uppercase font-medium">
             AWESOME PROJECTS
@@ -73,7 +76,7 @@
         <!-- Stat 2 -->
         <div class="p-6">
           <h2 class="text-4xl font-semibold">
-            <span class="counter" data-target="11">11</span>+
+            <span class="counter" data-target="11">{{countryCounter}}</span>+
           </h2>
           <p class="mt-2 text-sm tracking-wide uppercase font-medium">
             COUNTRIES SERVED
@@ -83,7 +86,7 @@
         <!-- Stat 3 -->
         <div class="p-6">
           <h2 class="text-4xl font-semibold">
-            <span class="counter" data-target="100">100</span>+
+            <span class="counter" data-target="100">{{deliveryCounter}}</span>+
           </h2>
           <p class="mt-2 text-sm tracking-wide uppercase font-medium">
             ON TIME DELIVERY
@@ -93,8 +96,8 @@
         <!-- Stat 4 -->
         <div class="p-6">
           <h2 class="text-4xl font-semibold">
-            <span class="counter" data-target="12">12</span>+
-          </h2>
+            <span class="counter" data-target="12">{{bankingCounter}}</span>+
+         </h2>
           <p class="mt-2 text-sm tracking-wide uppercase font-medium">
             BANKING AUTOMATION
           </p>
@@ -105,11 +108,11 @@
 
   <!-- Services Title -->
   <div class="container mx-auto px-6 text-center my-16">
-    <p class="text-orange-600 font-bold uppercase tracking-wide">
+    <p class="text-orange-500 font-bold uppercase tracking-wide">
       Our Services
     </p>
     <h2 class="text-4xl md:text-5xl mt-4 font-extralight">
-      The <span class="text-orange-600 font-bold">Services</span> We're Offering
+      The <span class="text-orange-500 font-bold">Services</span> We're Offering
     </h2>
     <p class="mt-4 text-gray-600 max-w-2xl mx-auto font-medium">
       Comprehensive core banking application services for all banking products
@@ -176,12 +179,12 @@
   <div class="container mx-auto px-6">
     <!-- Top Text -->
     <div class="text-center mb-12">
-      <p class="text-orange-600 font-bold uppercase tracking-wide mb-4">
+      <p class="text-orange-500 font-bold uppercase tracking-wide mb-4">
         Functionalities
       </p>
       <h2 class="text-3xl md:text-4xl font-extralight text-white mb-6">
         Global
-        <span class="text-orange-600 font-semibold">Core Banking</span> Solution
+        <span class="text-orange-500 font-semibold">Core Banking</span> Solution
       </h2>
       <p class="text-gray-300 max-w-3xl mx-auto font-medium">
         With our modular core banking solution, leverage the latest technology
@@ -201,8 +204,8 @@
           class="pb-2 px-4 font-normal transition border-b-2"
           [ngClass]="
             activeIndex === i
-              ? 'text-orange-600 border-orange-600'
-              : 'text-gray-400 border-transparent hover:text-orange-600'
+              ? 'text-orange-500 border-orange-600'
+              : 'text-gray-400 border-transparent hover:text-orange-500'
           "
         >
           {{ item.tab }}
@@ -230,7 +233,7 @@
         <!-- Right Side Content -->
         <div>
           <h6
-            class="text-orange-600 font-medium uppercase mb-2 text-lg tracking-wide"
+            class="text-orange-500 font-medium uppercase mb-2 text-lg tracking-wide"
           >
             {{ functionalities[activeIndex].subtitle }}
           </h6>
@@ -256,12 +259,12 @@
   <div class="container mx-auto px-6">
     <!-- Heading -->
     <div class="text-center mb-12">
-      <p class="uppercase text-orange-600 font-extrabold tracking-wide mb-4">
+      <p class="uppercase text-orange-500 font-semibold tracking-wide mb-4">
         TESTIMONIALS
       </p>
       <h2 class="text-4xl font-extralight text-gray-900">
         Read What They Have To Say About
-        <span class="text-orange-600 font-normal">Working With Us</span>
+        <span class="text-orange-500 font-normal">Working With Us</span>
       </h2>
     </div>
 
@@ -277,61 +280,65 @@
         <p class="mt-4 text-white font-medium mb-4">
           Customer experiences that speak for themselves
         </p>
-        <div class="flex justify-center mt-4">
-          <img
-            src="image/testimonial2.png"
-            alt="Customer"
-            class="w-12 h-12 rounded-full border-2 border-white shadow"
-          />
-          <img
-            src="image/testimonial3.png"
-            alt="Customer"
-            class="w-12 h-12 rounded-full border-2 border-white shadow -ml-4"
-          />
-          <img
-            src="image/testimonial4.png"
-            alt="Customer"
-            class="w-12 h-12 rounded-full border-2 border-white shadow -ml-4"
-          />
-          <img
-            src="image/testimonial5.png"
-            alt="Customer"
-            class="w-12 h-12 rounded-full border-2 border-white shadow -ml-4"
-          />
+        <div class="flex justify-center mt-4 space-x-[-12px]">
+          <ng-container *ngFor="let item of avatars; let i = index">
+            <img  #avatarEl
+              [src]="item.image"
+              [alt]="item.name"
+              class="w-12 h-12 rounded-full border-2 border-white shadow swap-animate" 
+            />
+          </ng-container>
         </div>
       </div>
 
-      <!-- Right Content (span 2 cols) -->
-      <div class="lg:col-span-8 bg-white shadow-lg rounded-xl p-8 h-96">
-        <div>
-          <div class="text-yellow-500 text-lg mb-10">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-700 leading-relaxed mb-10">
-            No Other Ecommerce Platform Allows People To Start For Free And Grow
-            Their Store As Their Business Grows. More Importantly, WooCommerce
-            Doesn't Charge You A Portion Of Your Profits As Your Business Grows!
-          </p>
-          <div class="flex items-center mb-10">
-            <img
-              src="image/testimonial1.png"
-              alt="Profile"
-              class="w-14 h-14 rounded-full border-2 border-white shadow"
-            />
-            <div class="ml-4">
-              <h6 class="text-lg font-semibold text-gray-900">
-                Sarah Mitchell
-              </h6>
-              <p class="text-white text-sm">Marketing Director</p>
+      <!-- Right Content -->
+      <div
+        class="lg:col-span-8 bg-white shadow-lg rounded-xl p-8 h-96 relative"
+      >
+        <div class="swiper testimonialSwiper">
+          <div class="swiper-wrapper">
+            @for (item of testimonials; track $index) {
+            <div class="swiper-slide">
+              <div>
+                <div class="text-orange-500 text-lg mb-10">
+                  <i
+                    *ngFor="let star of [].constructor(5); let i = index"
+                    class="mr-2 fa-star"
+                    [ngClass]="i < item.rating ? 'fa-solid' : 'fa-regular'"
+                  >
+                  </i>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-10">
+                  {{ item.review }}
+                </p>
+                <div class="flex items-center mb-10">
+                  <img
+                    [src]="item.image"
+                    [alt]="item.name"
+                    class="w-14 h-14 rounded-full border-2 border-white shadow"
+                  />
+                  <div class="ml-4">
+                    <h6 class="text-lg font-semibold text-gray-900">
+                      {{ item.name }}
+                    </h6>
+                    <p class="text-gray-500 text-sm">{{ item.company }}</p>
+                  </div>
+                </div>
+              </div>
             </div>
+            }
           </div>
         </div>
-        <div class="mt-6 space-x-3">
+
+        <!-- Navigation -->
+        <div class="mt-6 space-x-3 absolute bottom-6">
           <button
-            class="inline-flex text-lg items-center justify-center w-12 h-12 border border-gray-300 rounded-full text-gray-600 hover:bg-gray-100"
+            class="swiper-button-prev inline-flex text-lg items-center justify-center w-14 h-14 border border-gray-300 rounded-[10px] text-gray-600 hover:text-white hover:bg-orange-500 transition delay-200 duration-200"
           >
             ❮
           </button>
           <button
-            class="inline-flex text-lg items-center justify-center w-12 h-12 border border-gray-300 rounded-full text-gray-600 hover:bg-gray-100"
+            class="swiper-button-next inline-flex text-lg items-center justify-center w-14 h-14 border border-gray-300 rounded-[5px] text-gray-600 hover:bg-orange-500 hover:text-white transition delay-200 duration-200"
           >
             ❯
           </button>
@@ -348,12 +355,12 @@
         <!-- Left Side -->
         <div class="text-center md:text-left mb-6 md:mb-0 lg:col-span-6">
           <p
-            class="uppercase text-sm font-extrabold tracking-wide text-orange-600"
+            class="uppercase text-sm font-extrabold tracking-wide text-orange-500"
           >
             Careers
           </p>
           <h3 class="text-3xl md:text-4xl font-extralight text-white">
-            Become A <span class="text-orange-600 font-semibold">Rumango</span>
+            Become A <span class="text-orange-500 font-semibold">Rumango</span>
           </h3>
         </div>
 
@@ -381,62 +388,17 @@
   <div class="container mx-auto px-6">
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
+        @for (item of clients; track $index) {
         <div class="swiper-slide">
-          <img
-            src="image/customer1.png"
-            alt="Client 1"
-            class="mx-auto h-12 object-contain"
-          />
+          <a [href]="item.link" target="_blank">
+            <img
+              [src]="item.src"
+              [alt]="item.alt"
+              class="mx-auto h-12 object-contain"
+            />
+          </a>
         </div>
-        <div class="swiper-slide">
-          <img
-            src="image/customer2.png"
-            alt="Client 2"
-            class="mx-auto h-12 object-contain"
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="image/customer3.png"
-            alt="Client 3"
-            class="mx-auto h-12 object-contain"
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="image/customer4.png"
-            alt="Client 4"
-            class="mx-auto h-12 object-contain"
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="image/customer5.png"
-            alt="Client 5"
-            class="mx-auto h-12 object-contain"
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="image/customer5.png"
-            alt="Client 5"
-            class="mx-auto h-12 object-contain"
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="image/customer5.png"
-            alt="Client 5"
-            class="mx-auto h-12 object-contain"
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="image/customer5.png"
-            alt="Client 5"
-            class="mx-auto h-12 object-contain"
-          />
-        </div>
+        }
       </div>
     </div>
   </div>
