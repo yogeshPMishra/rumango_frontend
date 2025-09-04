@@ -1,5 +1,11 @@
 import { NgClass, NgFor, NgStyle, NgIf } from '@angular/common';
-import { Component, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  ViewChildren,
+  QueryList,
+  ElementRef,
+  ChangeDetectorRef,
+} from '@angular/core';
 
 import Swiper from 'swiper';
 import { Autoplay } from 'swiper/modules';
@@ -13,7 +19,17 @@ import 'swiper/css';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  // 🔹 Cards Section Data
+  @ViewChildren('avatarEl') avatarEls!: QueryList<ElementRef>;
+
+  swiper!: Swiper;
+  projectCounter: number = 0;
+  countryCounter: number = 0;
+  deliveryCounter: number = 0;
+  bankingCounter: number = 0;
+  activeIndex = 0;
+  swiperActiveIndex = 0;
+  avatars: any = [];
+
   cards = [
     {
       title: 'Product Customization',
@@ -109,13 +125,77 @@ export class HomeComponent {
     },
   ];
 
-  // ✅ Show "Median" first by default
-  activeIndex = 0;
+  clients = [
+    { src: 'image/customer1.png', alt: 'Client 1', link: '' },
+    { src: 'image/customer2.png', alt: 'Client 2', link: '' },
+    { src: 'image/customer3.png', alt: 'Client 3', link: '' },
+    { src: 'image/customer4.png', alt: 'Client 4', link: '' },
+    { src: 'image/customer5.png', alt: 'Client 5', link: '' },
+    { src: 'image/customer5.png', alt: 'Client 5', link: '' },
+  ];
 
-  setActive(index: number) {
-    this.activeIndex = index;
+  testimonials = [
+    {
+      rating: 5,
+      review:
+        "No Other Ecommerce Platform Allows People To Start For Free And Grow Their Store As Their Business Grows. More Importantly, It Doesn't Charge You A Portion Of Your Profits As Your Business Grows!",
+      image: 'image/testimonial1.png',
+      name: 'Sarah Mitchell',
+      role: 'Marketing Director',
+      company: 'ABC Corp',
+      date: '2025-09-04',
+    },
+    {
+      rating: 4,
+      review:
+        'Great customer support and easy setup. My business scaled without worrying about hidden costs!',
+      image: 'image/testimonial2.png',
+      name: 'John Carter',
+      role: 'Startup Founder',
+      company: 'TechStart',
+      date: '2025-09-01',
+    },
+    {
+      rating: 5,
+      review:
+        'This platform gives me full control over my store while keeping costs transparent. Highly recommend!',
+      image: 'image/testimonial3.png',
+      name: 'Emily Davis',
+      role: 'Ecommerce Consultant',
+      company: 'ConsultPro',
+      date: '2025-08-28',
+    },
+    {
+      rating: 5,
+      review:
+        'I was able to launch my store quickly and focus on sales instead of dealing with complicated setups.',
+      image: 'image/testimonial4.png',
+      name: 'Michael Lee',
+      role: 'Small Business Owner',
+      company: 'Lee Crafts',
+      date: '2025-08-25',
+    },
+    {
+      rating: 4,
+      review:
+        'The flexibility and scalability helped me expand my product range without extra costs.',
+      image: 'image/testimonial5.png',
+      name: 'Anna Rodriguez',
+      role: 'Entrepreneur',
+      company: 'Rodriguez Designs',
+      date: '2025-08-20',
+    },
+  ];
+
+  constructor(private cdr: ChangeDetectorRef) {}
+  ngOnInit() {
+    this.avatars = [...this.testimonials];
+    this.animateCounter('projectCounter', 0, 71, 2000);
+    this.animateCounter('countryCounter', 50, 11, 2000);
+    this.animateCounter('deliveryCounter', 0, 100, 2000);
+    this.animateCounter('bankingCounter', 0, 12, 2000);
   }
-  // ✅ Initialize Swiper after view is ready
+
   ngAfterViewInit() {
     new Swiper('.mySwiper', {
       modules: [Autoplay],
@@ -134,5 +214,114 @@ export class HomeComponent {
         1024: { slidesPerView: 5 },
       },
     });
+
+    this.swiper = new Swiper('.testimonialSwiper', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      speed: 600,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on: {
+        slideChange: () => {
+          // Use arrow fn so "this" = Angular component
+          this.swiperActiveIndex = this.swiper?.realIndex;
+          this.shuffleAvatars();
+        },
+      },
+    });
+
+    document
+      .querySelector('.swiper-button-next')
+      ?.addEventListener('click', () => {
+        this.swiper.slideNext();
+      });
+    document
+      .querySelector('.swiper-button-prev')
+      ?.addEventListener('click', () => {
+        this.swiper.slidePrev();
+      });
+  }
+  setActive(index: number) {
+    this.activeIndex = index;
+  }
+
+  swapAvatars(i: number, j: number) {
+    const els = this.avatarEls.toArray();
+    const el1 = els[i].nativeElement;
+    const el2 = els[j].nativeElement;
+
+    // First positions
+    const rect1 = el1.getBoundingClientRect();
+    const rect2 = el2.getBoundingClientRect();
+
+    // Swap avatars in array
+    [this.avatars[i], this.avatars[j]] = [this.avatars[j], this.avatars[i]];
+
+    this.cdr.detectChanges(); // ✅ use cdr instead of cd
+
+    // New positions
+    const newRect1 = el1.getBoundingClientRect();
+    const newRect2 = el2.getBoundingClientRect();
+
+    // Invert delta
+    const dx1 = rect1.left - newRect1.left;
+    const dx2 = rect2.left - newRect2.left;
+
+    el1.style.transform = `translateX(${dx1}px)`;
+    el2.style.transform = `translateX(${dx2}px)`;
+
+    requestAnimationFrame(() => {
+      el1.classList.add('swap-animate');
+      el2.classList.add('swap-animate');
+      el1.style.transform = '';
+      el2.style.transform = '';
+    });
+
+    el1.addEventListener(
+      'transitionend',
+      () => el1.classList.remove('swap-animate'),
+      { once: true }
+    );
+    el2.addEventListener(
+      'transitionend',
+      () => el2.classList.remove('swap-animate'),
+      { once: true }
+    );
+  }
+
+  shuffleAvatars() {
+    if (this.avatars.length < 2) return;
+
+    const i = Math.floor(Math.random() * this.avatars.length);
+    let j = Math.floor(Math.random() * this.avatars.length);
+    while (j === i) j = Math.floor(Math.random() * this.avatars.length);
+
+    this.swapAvatars(i, j);
+  }
+
+  animateCounter(
+    variable: keyof HomeComponent,
+    start: number,
+    end: number,
+    duration: number
+  ) {
+    let startTime: number | null = null;
+
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+
+      // update the chosen variable dynamically
+      (this as any)[variable] = Math.floor(progress * (end - start) + start);
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+
+    requestAnimationFrame(step);
   }
 }

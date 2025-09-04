@@ -36,3 +36,11 @@
   background-size: cover !important;
   background-position: top/center;
 }
+
+
+
+
+.swap-animate {
+  transition: transform 0.5s ease-in-out;
+}
+
